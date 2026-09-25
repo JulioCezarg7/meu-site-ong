@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projetos - ONG Transformando Vidas</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <header>
+      <h1>ONG Transformando Vidas</h1>
+
+      <input type="checkbox" id="menu-toggle" class="menu-hamburguer-checkbox">
+      <label for="menu-toggle" class="menu-hamburguer-label">&#9776;</label>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li class="dropdown">
+            <a href="projetos.html">Projetos &#9662;</a>
+            <ul class="dropdown-menu">
+              <li><a href="projetos.html#educar">Educar para o Futuro</a></li>
+              <li><a href="projetos.html#alimento">Alimento no Prato</a></li>
+            </ul>
+          </li>
+          <li><a href="cadastro.html">Cadastro</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Seção de Cartões de Projetos em Flexbox -->
+      <section id="projetos">
+        <h2>Nossos Projetos Sociais</h2>
+        
+        <div class="grid-cartoes">
+          <article class="card" id="educar">
+            <div>
+              <h3>Educar para o Futuro <span class="badge badge-success">Em Andamento</span></h3>
+              <p>Aulas de reforço escolar e capacitação digital para crianças e jovens da comunidade.</p>
+            </div>
+            <a href="cadastro.html" class="btn">Quero Participar</a>
+          </article>
+
+          <article class="card" id="alimento">
+            <div>
+              <h3>Alimento no Prato <span class="badge badge-danger">Urgente</span></h3>
+              <p>Arrecadação e distribuição de cestas básicas para famílias em situação de vulnerabilidade.</p>
+            </div>
+            <a href="cadastro.html" class="btn">Quero Doar</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Voluntariado -->
+      <section id="voluntariado">
+        <h2>Seja um Voluntário</h2>
+        <p>Procuramos pessoas engajadas para nos ajudar nas seguintes áreas:</p>
+        <ul>
+          <li>Tutores de reforço escolar</li>
+          <li>Apoio na logística de distribuição de alimentos</li>
+          <li>Gestão de redes sociais</li>
+        </ul>
+        <br>
+        <a href="cadastro.html" class="btn">Cadastre-se como Voluntário</a>
+      </section>
+
+      <!-- Doações -->
+      <section id="doacoes">
+        <h2>Como Contribuir</h2>
+        <p>Sua doação ajuda a manter nossos projetos ativos. Contribua via Pix ou transferência:</p>
+        <ul>
+          <li><strong>Chave Pix (CNPJ):</strong> 00.123.456/0001-89</li>
+          <li><strong>Banco:</strong> Banco do Brasil (001) | Agência: 1234-5 | C/C: 98765-4</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 ONG Transformando Vidas. Todos os direitos reservados.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

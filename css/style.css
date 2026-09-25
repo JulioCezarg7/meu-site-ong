@@ -1,0 +1,413 @@
+/* ==============================================
+   1. DESIGN SYSTEM (VARIÁVEIS CSS)
+   ============================================== */
+:root {
+  /* Paleta de Cores (8 cores) */
+  --primary-color: #1a5f7a;       /* Azul principal */
+  --secondary-color: #28a745;     /* Verde de ação e sucesso */
+  --accent-color: #ffc107;        /* Amarelo de destaque e alerta */
+  --danger-color: #dc3545;        /* Vermelho de erro */
+  
+  --bg-light: #f8f9fa;            /* Fundo geral */
+  --card-bg: #ffffff;             /* Fundo dos cartões */
+  --text-dark: #212529;           /* Texto principal */
+  --text-muted: #6c757d;          /* Texto secundário */
+
+  /* Escala Tipográfica (5 patamares) */
+  --font-xs: 0.875rem;            /* 14px */
+  --font-sm: 1rem;                /* 16px */
+  --font-md: 1.25rem;             /* 20px */
+  --font-lg: 1.75rem;             /* 28px */
+  --font-xl: 2.5rem;              /* 40px */
+
+  /* Espaçamentos Modulares */
+  --space-xs: 0.5rem;             /* 8px */
+  --space-sm: 1rem;               /* 16px */
+  --space-md: 1.5rem;             /* 24px */
+  --space-lg: 2rem;               /* 32px */
+  --space-xl: 3rem;               /* 48px */
+}
+
+/* ==============================================
+   2. ESTILOS BASE E RESET
+   ============================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  font-size: var(--font-sm);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* ==============================================
+   3. ARQUITETURA MACRO - CSS GRID DE 12 COLUNAS
+   ============================================== */
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-md);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-sm);
+}
+
+header, footer {
+  grid-column: span 12;
+}
+
+main {
+  grid-column: span 12;
+}
+
+/* ==============================================
+   4. NAVEGAÇÃO E HEADER (FLEXBOX + DROPDOWN)
+   ============================================== */
+header {
+  background-color: var(--card-bg);
+  padding: var(--space-md);
+  border-bottom: 3px solid var(--primary-color);
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header h1 {
+  color: var(--primary-color);
+  font-size: var(--font-lg);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+nav a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+  padding: var(--space-xs) var(--space-sm);
+  transition: all 0.3s ease;
+}
+
+nav a:hover, nav a:focus {
+  color: var(--secondary-color);
+  background-color: rgba(40, 167, 69, 0.1);
+  border-radius: 4px;
+}
+
+/* Submenu Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--card-bg);
+  min-width: 180px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  list-style: none;
+  padding: var(--space-xs) 0;
+  z-index: 100;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--font-xs);
+}
+
+/* Checkbox Hack para Menu Hambúrguer em Mobile */
+.menu-hamburguer-checkbox {
+  display: none;
+}
+
+.menu-hamburguer-label {
+  display: none;
+  font-size: var(--font-lg);
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+/* ==============================================
+   5. COMPONENTES E CARTÕES (FLEXBOX + INTERATIVIDADE)
+   ============================================== */
+section {
+  background-color: var(--card-bg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-md);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+h2 {
+  color: var(--primary-color);
+  font-size: var(--font-lg);
+  margin-bottom: var(--space-sm);
+}
+
+/* Cartões de Projetos */
+.grid-cartoes {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+article.card {
+  flex: 1 1 calc(50% - var(--space-md));
+  background-color: var(--bg-light);
+  padding: var(--space-md);
+  border-radius: 6px;
+  border-left: 4px solid var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-xs);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+article.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* Botões e Estados Interativos */
+button, .btn {
+  display: inline-block;
+  background-color: var(--secondary-color);
+  color: #ffffff;
+  padding: var(--space-xs) var(--space-sm);
+  border: none;
+  border-radius: 4px;
+  font-size: var(--font-sm);
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  background-color: #218838;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+button:focus, .btn:focus {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+button:active, .btn:active {
+  transform: scale(0.98);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ==============================================
+   6. FORMULÁRIOS E VALIDAÇÃO VISUAL
+   ============================================== */
+fieldset {
+  border: 1px solid var(--text-muted);
+  padding: var(--space-md);
+  border-radius: 6px;
+  margin-bottom: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+legend {
+  font-weight: bold;
+  color: var(--primary-color);
+  padding: 0 var(--space-xs);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"] {
+  width: 100%;
+  padding: var(--space-xs) var(--space-sm);
+  border: 2px solid #ced4da;
+  border-radius: 4px;
+  font-size: var(--font-sm);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(26, 95, 122, 0.2);
+}
+
+/* Validação Visual Nátiva HTML5 */
+input:not(:placeholder-shown):valid {
+  border-color: var(--secondary-color);
+  background-color: #f4fbf6;
+}
+
+input:not(:placeholder-shown):invalid {
+  border-color: var(--danger-color);
+  background-color: #fdf2f2;
+}
+
+/* ==============================================
+   7. COMPONENTES DE FEEDBACK (BADGES, ALERTS, TOAST, MODAL)
+   ============================================== */
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  font-size: var(--font-xs);
+  font-weight: bold;
+  border-radius: 50px;
+  color: #ffffff;
+}
+.badge-success { background-color: var(--secondary-color); }
+.badge-warning { background-color: var(--accent-color); color: #000; }
+.badge-danger  { background-color: var(--danger-color); }
+
+/* Alerts */
+.alert {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 6px;
+  margin-bottom: var(--space-sm);
+  border-left: 5px solid;
+}
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border-color: var(--secondary-color);
+}
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: var(--danger-color);
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--text-dark);
+  color: #ffffff;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  z-index: 1000;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: var(--card-bg);
+  padding: var(--space-lg);
+  border-radius: 8px;
+  max-width: 450px;
+  width: 90%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* ==============================================
+   8. BREAKPOINTS RESPONSIVOS (5 CENÁRIOS)
+   ============================================== */
+/* Breakpoint 1: Mobile Pequeno (até 480px) */
+@media (max-width: 480px) {
+  .container { grid-template-columns: repeat(4, 1fr); }
+  
+  .menu-hamburguer-label { display: block; }
+  
+  nav {
+    width: 100%;
+  }
+  
+  nav ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: var(--space-sm);
+  }
+  
+  .menu-hamburguer-checkbox:checked ~ nav ul {
+    display: flex;
+  }
+
+  article.card { flex: 1 1 100%; }
+}
+
+/* Breakpoint 2: Mobile Grande / Tablets na Vertical (481px a 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .container { grid-template-columns: repeat(8, 1fr); }
+  article.card { flex: 1 1 100%; }
+}
+
+/* Breakpoint 3: Tablets na Horizontal (769px a 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container { grid-template-columns: repeat(12, 1fr); }
+}
+
+/* Breakpoint 4: Desktops Padrão (1025px a 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .container { grid-template-columns: repeat(12, 1fr); max-width: 1200px; }
+}
+
+/* Breakpoint 5: Desktops Panorâmicos / Ultrawide (acima de 1441px) */
+@media (min-width: 1441px) {
+  .container { grid-template-columns: repeat(12, 1fr); max-width: 1400px; }
+}
+
+/* Rodapé */
+footer {
+  text-align: center;
+  padding: var(--space-md);
+  background-color: var(--card-bg);
+  color: var(--text-muted);
+  border-radius: 4px;
+}
